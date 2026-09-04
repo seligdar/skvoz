@@ -1,0 +1,139 @@
+<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <meta name="color-scheme" content="only light" />
+    <meta name="theme-color" content="#2b2e33" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+    <meta name="apple-mobile-web-app-title" content="СКВОЗЬ" />
+    <link rel="manifest" href="./manifest.webmanifest" />
+    <link rel="apple-touch-icon" href="./pwa/icon-192.png" />
+    <title>СКВОЗЬ · века</title>
+    <meta name="description" content="СКВОЗЬ" />
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' fill='%23ece9e2'/><g fill='none' stroke='%232b2e33' stroke-width='2.4'><path d='M7 26V16a9 9 0 0 1 18 0v10'/><path d='M3 29h26'/></g></svg>" />
+    <script>
+      // витрину помечаем до первой отрисовки, иначе на миг видно палитру
+      if (new URLSearchParams(location.search).get('attract') === '1') {
+        document.documentElement.dataset.attract = '1';
+      }
+    </script>
+    <style>
+      /* разметка веков на линейке + кнопка-маяк в заглушке (зона спайка) */
+      #ticks { position: absolute; inset: 0; pointer-events: none; z-index: 1; }
+      /* Подпись стоит под линией ленты, а не на ней: сверху линия и
+         бегунок, подписи там перечёркивались, а «500 г.» рвалось надвое. */
+      #ticks .tick {
+        position: absolute; bottom: 58%; transform: translateX(-50%);
+        white-space: nowrap;
+        font-family: 'JetBrains Mono', monospace; font-size: 10px;
+        font-variant-numeric: tabular-nums; opacity: 0.62; user-select: none;
+      }
+      #ticks .tick::before {
+        content: ''; position: absolute; left: 50%; bottom: -6px;
+        width: 1px; height: 5px; background: var(--hair);
+      }
+      #ticks .tick.first { transform: none; }
+      #ticks .tick.first::before { left: 0; }
+      #ticks .tick.last { transform: translateX(-100%); }
+      #ticks .tick.last::before { left: auto; right: 0; }
+      #res-retry.primary { background: var(--ink); color: var(--paper); }
+      #res-retry.primary:hover { background: var(--paper); color: var(--ink); }
+      #res-orders.plain { background: none; color: var(--ink); }
+      #res-orders.plain:hover { background: var(--ink); color: var(--paper); }
+      @media (max-width: 768px) {
+        /* на мобильном века крупно: читаются с расстояния вытянутой руки */
+        #ticks .tick { font-size: 14px; padding-top: 10px; }
+        #ticks .tick::before { height: 7px; }
+      }
+    </style>
+    <script type="module" crossorigin src="./assets/spike-Q4HObV6U.js"></script>
+    <link rel="modulepreload" crossorigin href="./assets/spike-Bkp1ek5k.js">
+    <link rel="modulepreload" crossorigin href="./assets/device-CDJyhaKh.js">
+    <link rel="modulepreload" crossorigin href="./assets/loop-D-vbIP3N.js">
+    <link rel="modulepreload" crossorigin href="./assets/pixelRatio-DLxmMwxw.js">
+    <link rel="modulepreload" crossorigin href="./assets/prologue-DVpvoFUY.js">
+    <link rel="modulepreload" crossorigin href="./assets/campaign-_0wg1S28.js">
+    <link rel="modulepreload" crossorigin href="./assets/region-BRiFY_Co.js">
+    <link rel="modulepreload" crossorigin href="./assets/records-rrOyz4zX.js">
+    <link rel="modulepreload" crossorigin href="./assets/elementName-BtPU9xD6.js">
+    <link rel="stylesheet" crossorigin href="./assets/spike-BK7Os4aY.css">
+    <link rel="stylesheet" crossorigin href="./assets/loop-CVRt-vYo.css">
+  </head>
+  <body>
+    <div id="app">
+      <canvas id="scene"></canvas>
+      <div id="titleblock">
+        <div class="tb-name">СКВОЗЬ</div>
+        <div class="tb-sheet">лист 01 · часовня у моря</div>
+      </div>
+      <aside id="autopsy" hidden>
+        <div class="au-head">вскрытие</div>
+        <dl id="au-body"></dl>
+        <div id="au-quiz" hidden>
+          <div class="aq-q">причина отказа</div>
+          <div id="aq-choices"></div>
+          <div id="aq-verdict" hidden></div>
+        </div>
+        <div id="au-actions">
+          <!-- Четыре ровные метки: стрелки стояли у двух из четырёх, и ряд
+               читался как «две ссылки и два слова». Уходят все четыре. -->
+          <a href="./editor.html">конструктор</a>
+          <a href="./formulas.html">формулы</a>
+          <a href="./atlas.html">дерево</a>
+          <a href="./menu.html">меню</a>
+        </div>
+      </aside>
+      <div id="hud">
+        <div>
+          <div id="year">0</div>
+          <div id="year-era">от сдачи</div>
+        </div>
+        <div id="controls">
+          <button id="play" title="пробел">▶</button>
+          <!-- «2×/10×/60×» читались множителем обычной скорости, а обычной в
+               ряду не было вовсе: вернуться было некуда. Это годы в секунду,
+               так они и подписаны; «г.» на этом же листе уже значит годы. -->
+          <button class="speed" data-v="2" title="2 года в секунду">2 г/с</button>
+          <button class="speed on" data-v="10" title="10 лет в секунду">10 г/с</button>
+          <button class="speed" data-v="60" title="60 лет в секунду">60 г/с</button>
+          <button id="sound-btn" title="звук">звук</button>
+          <button id="result-btn" hidden>итог</button>
+        </div>
+        <div id="ruler">
+          <input id="scrub" type="range" min="0" max="600" step="0.25" value="0" />
+          <!-- срок заказа на линейке: лента останавливается на нём с итогом -->
+          <div id="term-tick" hidden></div>
+          <div id="ticks"></div>
+          <div id="marks"></div>
+        </div>
+      </div>
+
+      <!-- итог заказа: вердикт, очки, вскрытие (docs/07) -->
+      <div id="result" hidden>
+        <div class="res-card">
+          <div class="res-title" id="res-title">итог</div>
+          <div class="res-verdict" id="res-verdict"></div>
+          <!-- Очки за сдачу лежали под «подробнее»: человек сдавал заказ и не
+               видел, сколько ему за это пришло. Это главная цифра экрана. -->
+          <div class="res-award" id="res-award" hidden></div>
+          <div class="res-rows" id="res-rows"></div>
+          <!-- остальные строки итога: приговор и две строки сверху, цифры под «подробнее» -->
+          <button type="button" class="res-more-btn" id="res-more-btn" hidden>подробнее</button>
+          <div class="res-more" id="res-more" hidden></div>
+          <!-- сюда переезжает викторина вскрытия: понимание оплачивается здесь -->
+          <div id="res-quiz" hidden></div>
+          <div class="res-sub" id="res-autopsy-title" hidden>вскрытие · цепь событий</div>
+          <ol class="res-chain" id="res-chain"></ol>
+          <div class="res-actions">
+            <button id="res-orders">к заказам</button>
+            <button id="res-retry">повторить</button>
+            <button id="res-close">смотреть дальше</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

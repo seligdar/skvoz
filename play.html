@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <meta name="color-scheme" content="only light" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+    <meta name="apple-mobile-web-app-title" content="СКВОЗЬ" />
+    <title>СКВОЗЬ · игра</title>
+    <meta name="description" content="СКВОЗЬ" />
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' fill='%23ece9e2'/><g fill='none' stroke='%232b2e33' stroke-width='2.4'><path d='M7 26V16a9 9 0 0 1 18 0v10'/><path d='M3 29h26'/></g></svg>" />
+    <script type="module" crossorigin src="./assets/play-Croe4Bjw.js"></script>
+    <link rel="modulepreload" crossorigin href="./assets/spike-Bkp1ek5k.js">
+    <link rel="modulepreload" crossorigin href="./assets/prologue-DVpvoFUY.js">
+    <link rel="modulepreload" crossorigin href="./assets/graph-DCScanXG.js">
+    <link rel="modulepreload" crossorigin href="./assets/campaign-_0wg1S28.js">
+    <link rel="modulepreload" crossorigin href="./assets/sheet-CfHmWWJ_.js">
+    <link rel="stylesheet" crossorigin href="./assets/spike-BK7Os4aY.css">
+    <link rel="stylesheet" crossorigin href="./assets/play-C-8p4yvx.css">
+  </head>
+  <body>
+    <div id="app" class="play-shell">
+      <!-- одна строка на всю обвязку: выход в меню и четыре листа. Отдельная
+           шапка держала «СКВОЗЬ» и «Древность» — полосу экрана под три слова -->
+      <nav id="play-tabs" aria-label="этапы игры">
+        <a id="play-menu" href="./menu.html">меню</a>
+        <!-- Номер отдельным узлом: на телефоне пять названий с номерами в
+             строку не встают, и «01 ·» переносилось на строку выше своего
+             слова. Порядок листов и так задан порядком вкладок. -->
+        <button type="button" data-stage="formulas" data-key="1"><i>01 ·</i> формулы</button>
+        <button type="button" data-stage="atlas" data-key="2">дерево</button>
+        <button type="button" data-stage="build" data-key="3"><i>02 ·</i> конструктор</button>
+        <button type="button" data-stage="watch" data-key="4"><i>03 ·</i> века</button>
+      </nav>
+      <!-- Закрытая вкладка молчала: нажатие не делало ничего и не говорило,
+           чего не хватает. -->
+      <div id="play-why" hidden></div>
+      <main id="play-main">
+      </main>
+    </div>
+  </body>
+</html>

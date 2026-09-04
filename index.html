@@ -1,0 +1,30 @@
+<!-- skvoz-pack: redirect -->
+<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <title>СКВОЗЬ</title>
+    <style>
+      html, body { height: 100%; margin: 0; }
+      body {
+        display: flex; align-items: center; justify-content: center;
+        background: #ece9e2; color: #2b2e33;
+        font-family: 'PT Sans', sans-serif;
+      }
+      a {
+        font-family: 'JetBrains Mono', monospace; font-size: 13px;
+        letter-spacing: 0.14em; text-transform: uppercase;
+        color: #2b2e33; text-decoration: none;
+        border: 1.2px solid #2b2e33; padding: 12px 20px;
+      }
+    </style>
+  </head>
+  <body>
+    <a href="menu.html">открыть меню</a>
+    <script>
+      var q = location.search;
+      location.replace(/[?&]order=/.test(q) ? 'spike.html' + q : 'menu.html');
+    </script>
+  </body>
+</html>

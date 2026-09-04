@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <meta name="color-scheme" content="only light" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+    <meta name="apple-mobile-web-app-title" content="СКВОЗЬ" />
+    <title>СКВОЗЬ · единый лист</title>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' fill='%23ece9e2'/><g fill='none' stroke='%232b2e33' stroke-width='2.4'><path d='M7 26V16a9 9 0 0 1 18 0v10'/><path d='M3 29h26'/></g></svg>" />
+    <script type="module" crossorigin src="./assets/app-B3xs3hI-.js"></script>
+    <link rel="modulepreload" crossorigin href="./assets/spike-Bkp1ek5k.js">
+    <link rel="stylesheet" crossorigin href="./assets/spike-BK7Os4aY.css">
+    <link rel="stylesheet" crossorigin href="./assets/app-Gt0dUCes.css">
+  </head>
+  <body>
+    <div id="app" class="workbench">
+      <header id="rail">
+        <div class="rail-mark">
+          <span class="rail-name">СКВОЗЬ</span>
+          <span class="rail-sub">единый лист</span>
+        </div>
+
+        <nav id="tabs">
+          <button class="tab" data-sheet="0">
+            <span class="tab-no">01</span><span class="tab-name">формулы</span>
+          </button>
+          <button class="tab" data-sheet="1">
+            <span class="tab-no">02</span><span class="tab-name">редактор</span>
+          </button>
+          <button class="tab" data-sheet="2">
+            <span class="tab-no">03</span><span class="tab-name">вид</span>
+          </button>
+          <span id="tab-ink"></span>
+        </nav>
+
+        <div class="rail-tail">
+          <span id="hint">1 · 2 · 3: соло &nbsp;·&nbsp; 0: все</span>
+          <button id="all-btn">все листы</button>
+          <a id="to-menu" href="./menu.html">меню</a>
+        </div>
+      </header>
+
+      <main id="sheets">
+        <section class="pane" data-sheet="0">
+          <div class="pane-head">
+            <span class="ph-no">лист 01</span>
+            <span class="ph-name">формулы</span>
+            <button class="ph-solo">соло</button>
+          </div>
+          <div class="pane-body">
+            <iframe src="./formulas.html" title="лист 01 · формулы"></iframe>
+          </div>
+        </section>
+
+        <div class="split" data-split="0" title="потянуть · двойной клик сбросит"></div>
+
+        <section class="pane" data-sheet="1">
+          <div class="pane-head">
+            <span class="ph-no">лист 02</span>
+            <span class="ph-name">редактор</span>
+            <button class="ph-solo">соло</button>
+          </div>
+          <div class="pane-body">
+            <iframe src="./editor.html" title="лист 02 · редактор"></iframe>
+          </div>
+        </section>
+
+        <div class="split" data-split="1" title="потянуть · двойной клик сбросит"></div>
+
+        <section class="pane" data-sheet="2">
+          <div class="pane-head">
+            <span class="ph-no">лист 03</span>
+            <span class="ph-name">вид</span>
+            <button class="ph-solo">соло</button>
+          </div>
+          <div class="pane-body">
+            <iframe src="./spike.html" title="лист 03 · вид"></iframe>
+          </div>
+        </section>
+      </main>
+    </div>
+  </body>
+</html>

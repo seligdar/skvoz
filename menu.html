@@ -1,0 +1,101 @@
+<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <meta name="color-scheme" content="only light" />
+    <meta name="theme-color" content="#2b2e33" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+    <meta name="apple-mobile-web-app-title" content="СКВОЗЬ" />
+    <link rel="manifest" href="./manifest.webmanifest" />
+    <link rel="apple-touch-icon" href="./pwa/icon-192.png" />
+    <title>СКВОЗЬ</title>
+    <meta name="description" content="СКВОЗЬ" />
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' fill='%23ece9e2'/><g fill='none' stroke='%232b2e33' stroke-width='2.4'><path d='M7 26V16a9 9 0 0 1 18 0v10'/><path d='M3 29h26'/></g></svg>" />
+    <script type="module" crossorigin src="./assets/menu-fo5PCSix.js"></script>
+    <link rel="modulepreload" crossorigin href="./assets/spike-Bkp1ek5k.js">
+    <link rel="modulepreload" crossorigin href="./assets/device-CDJyhaKh.js">
+    <link rel="modulepreload" crossorigin href="./assets/campaign-_0wg1S28.js">
+    <link rel="modulepreload" crossorigin href="./assets/prologue-DVpvoFUY.js">
+    <link rel="modulepreload" crossorigin href="./assets/sheet-CfHmWWJ_.js">
+    <link rel="modulepreload" crossorigin href="./assets/elementName-BtPU9xD6.js">
+    <link rel="modulepreload" crossorigin href="./assets/records-rrOyz4zX.js">
+    <link rel="modulepreload" crossorigin href="./assets/confirmButton-DAZh_eBE.js">
+    <link rel="stylesheet" crossorigin href="./assets/spike-BK7Os4aY.css">
+    <link rel="stylesheet" crossorigin href="./assets/menu-DPRPl9cl.css">
+  </head>
+  <body>
+    <div id="app" class="menu">
+      <!-- Одна сцена во весь экран, как в главном меню большой игры: Нотр-Дам
+           стоит и стареет, а меню лежит поверх него. Три равные панели читались
+           тремя чужими окнами и не давали ни одному кадру быть главным. -->
+      <div class="cell" id="stage-bg">
+        <!-- Адрес ставит меню, а не разметка: на телефоне сцену выбирает
+             устройство, и загрузку нельзя начинать до того, как выбор сделан. -->
+        <iframe
+          data-scene="./spike.html?attract=1&demo=notredame"
+          title="лист 03 · века"
+        ></iframe>
+        <!-- Телефон: тот же Нотр-Дам, но кадром, а не живой сценой. Живая
+             занимала главный поток на полторы секунды при открытии меню;
+             кадр снят с витрины (infra/e2e/menu-bg-phone.mjs). -->
+        <img id="stage-img" alt="" hidden data-src="./pwa/menu-notredame-phone.png" />
+      </div>
+      <div id="veil"></div>
+
+      <!-- игровой цикл: заказы кампании (docs/07) -->
+      <section id="orders" hidden>
+        <header id="orders-head">
+          <div id="orders-head-text">
+            <div class="ord-title">заказы</div>
+            <div class="ord-points">очков знания: <b id="ord-points-num">0</b></div>
+            <div class="ord-era" id="ord-era"></div>
+            <div class="ord-next" id="ord-next"></div>
+          </div>
+          <button id="orders-close">закрыть</button>
+        </header>
+        <div id="orders-list"></div>
+      </section>
+
+      <!-- финал кампании: что осталось стоять на конец календаря -->
+      <section id="finale" hidden>
+        <header id="finale-head">
+          <div>
+            <div class="ord-title">итог веков</div>
+            <div class="ord-points" id="fin-sub"></div>
+          </div>
+          <button id="finale-close">закрыть</button>
+        </header>
+        <div id="finale-list"></div>
+      </section>
+
+      <header id="brand">
+        <h1 id="title">СКВОЗЬ</h1>
+        <!-- весть портфеля: мир дожил до чьего-то обрушения -->
+        <button id="news" hidden></button>
+      </header>
+
+      <!-- Одна дверь вместо многих: «играть» ведёт прямо в текущий заказ
+           кампании, «заказы» — лестница, «мастерская» — свободная игра
+           (вещества, дерево, стройка и века живут там вкладками). -->
+      <nav id="items" aria-label="разделы">
+        <button class="item play" id="play-btn" data-go="editor.html">
+          <span id="play-word">играть</span>
+          <span id="play-sub" class="play-sub"></span>
+        </button>
+        <button class="item" id="orders-btn">заказы · 0 оч.</button>
+        <button class="item" data-go="play.html">мастерская · стройка без заказа</button>
+      </nav>
+      <div id="corner">
+        <div id="stamp">
+          <div class="st-row st-name">СКВОЗЬ</div>
+          <div class="st-row">лист 00 · меню</div>
+          <div class="st-row st-meta">↑ ↓ выбрать · ↵ открыть</div>
+        </div>
+        <button id="wipe">стереть чертежи</button>
+      </div>
+    </div>
+  </body>
+</html>

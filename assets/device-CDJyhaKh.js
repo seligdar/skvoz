@@ -1,0 +1,1 @@
+function t(){return window.innerWidth<=900?!0:window.matchMedia("(pointer: coarse)").matches}function n(){return"Capacitor"in window}function i(){n()&&(document.documentElement.dataset.native="1")}export{t as i,i as m};

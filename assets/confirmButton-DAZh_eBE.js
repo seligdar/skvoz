@@ -1,0 +1,1 @@
+function l(e,n,s,c){const m=e.textContent??"";let t=!1,r=0;const i=()=>{t=!1,window.clearTimeout(r),e.classList.remove("armed"),e.textContent=m},a=()=>{if(!t){t=!0,e.classList.add("armed"),e.textContent=n,r=window.setTimeout(i,c);return}i(),s()};return e.addEventListener("click",a),()=>{window.clearTimeout(r),e.removeEventListener("click",a)}}export{l as a};

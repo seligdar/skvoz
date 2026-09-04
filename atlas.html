@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <meta name="color-scheme" content="only light" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+    <meta name="apple-mobile-web-app-title" content="СКВОЗЬ" />
+    <title>СКВОЗЬ · дерево знаний</title>
+    <meta name="description" content="СКВОЗЬ" />
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' fill='%23ece9e2'/><g fill='none' stroke='%232b2e33' stroke-width='2.4'><path d='M7 26V16a9 9 0 0 1 18 0v10'/><path d='M3 29h26'/></g></svg>" />
+    <script type="module" crossorigin src="./assets/atlas-Bhjero8C.js"></script>
+    <link rel="modulepreload" crossorigin href="./assets/spike-Bkp1ek5k.js">
+    <link rel="modulepreload" crossorigin href="./assets/device-CDJyhaKh.js">
+    <link rel="modulepreload" crossorigin href="./assets/loop-D-vbIP3N.js">
+    <link rel="modulepreload" crossorigin href="./assets/prologue-DVpvoFUY.js">
+    <link rel="modulepreload" crossorigin href="./assets/sheet-CfHmWWJ_.js">
+    <link rel="modulepreload" crossorigin href="./assets/campaign-_0wg1S28.js">
+    <link rel="modulepreload" crossorigin href="./assets/atlasToast-BxQrsn4m.js">
+    <link rel="stylesheet" crossorigin href="./assets/spike-BK7Os4aY.css">
+    <link rel="stylesheet" crossorigin href="./assets/loop-CVRt-vYo.css">
+    <link rel="stylesheet" crossorigin href="./assets/atlas-BLDZcf98.css">
+  </head>
+  <body>
+    <div id="app" class="atlas-page">
+      <div id="atlas-scroll">
+        <svg id="atlas-svg" xmlns="http://www.w3.org/2000/svg"></svg>
+      </div>
+      <aside id="atlas-card" hidden>
+        <!-- Карточка закрывалась только тычком в пустое место карты: на
+             телефоне такого места под ней почти нет. -->
+        <button type="button" id="ac-close" aria-label="закрыть карточку">×</button>
+        <div class="ac-year" id="ac-year"></div>
+        <div class="ac-name" id="ac-name"></div>
+        <div class="ac-disc" id="ac-disc"></div>
+        <p class="ac-note" id="ac-note"></p>
+        <p class="ac-status" id="ac-status"></p>
+        <a id="ac-chem" hidden href="./formulas.html">открыть на формулах →</a>
+        <a id="ac-build" hidden href="./editor.html">строить этим →</a>
+      </aside>
+      <!-- Ключ к листу: три состояния узла различались только заливкой, и
+           нигде не было сказано, какая что значит. -->
+      <div id="atlas-legend" aria-hidden="true">
+        <span><i class="lg-open"></i>есть</span>
+        <span><i class="lg-hint"></i>можно собрать</span>
+        <span><i class="lg-shut"></i>закрыто</span>
+        <!-- Только что открытый узел носит своё, сплошное рыжее кольцо:
+             два разных рыжих знака на карте, а ключ объяснял один. -->
+        <span id="lg-fresh" hidden><i class="lg-new"></i>только что открыто</span>
+      </div>
+    </div>
+  </body>
+</html>

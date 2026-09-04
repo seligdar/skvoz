@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <meta name="color-scheme" content="only light" />
+    <meta name="theme-color" content="#2b2e33" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+    <meta name="apple-mobile-web-app-title" content="СКВОЗЬ" />
+    <link rel="manifest" href="./manifest.webmanifest" />
+    <link rel="apple-touch-icon" href="./pwa/icon-192.png" />
+    <title>СКВОЗЬ · формулы</title>
+    <meta name="description" content="СКВОЗЬ" />
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' fill='%23ece9e2'/><g fill='none' stroke='%232b2e33' stroke-width='2.4'><path d='M7 26V16a9 9 0 0 1 18 0v10'/><path d='M3 29h26'/></g></svg>" />
+    <script>
+      if (new URLSearchParams(location.search).get('attract') === '1') {
+        document.documentElement.dataset.attract = '1';
+      }
+    </script>
+    <script type="module" crossorigin src="./assets/formulas-DnjcrpA7.js"></script>
+    <link rel="modulepreload" crossorigin href="./assets/spike-Bkp1ek5k.js">
+    <link rel="modulepreload" crossorigin href="./assets/device-CDJyhaKh.js">
+    <link rel="modulepreload" crossorigin href="./assets/loop-D-vbIP3N.js">
+    <link rel="modulepreload" crossorigin href="./assets/pixelRatio-DLxmMwxw.js">
+    <link rel="modulepreload" crossorigin href="./assets/prologue-DVpvoFUY.js">
+    <link rel="modulepreload" crossorigin href="./assets/graph-DCScanXG.js">
+    <link rel="modulepreload" crossorigin href="./assets/sheet-CfHmWWJ_.js">
+    <link rel="modulepreload" crossorigin href="./assets/atlasToast-BxQrsn4m.js">
+    <link rel="modulepreload" crossorigin href="./assets/confirmButton-DAZh_eBE.js">
+    <link rel="modulepreload" crossorigin href="./assets/storageNotice-DuvZMpgO.js">
+    <link rel="stylesheet" crossorigin href="./assets/spike-BK7Os4aY.css">
+    <link rel="stylesheet" crossorigin href="./assets/loop-CVRt-vYo.css">
+    <link rel="stylesheet" crossorigin href="./assets/formulas-Czk3iFpz.css">
+  </head>
+  <body>
+    <div id="app" class="alchemy-page matter-table">
+      <aside id="collection" aria-label="открытые вещества"></aside>
+      <section id="stage">
+        <div id="craft-pad" aria-label="стол материи">
+          <canvas id="matter-canvas" width="720" height="420"></canvas>
+          <div id="craft-feedback" hidden></div>
+          <!-- сброс живёт в углу стола, а не поверх списка веществ -->
+          <button type="button" id="reset-btn">заново</button>
+          <!-- sheet скрыт: ядро всё ещё пишет SVG для расчёта, UI — только canvas -->
+          <svg id="sheet" hidden aria-hidden="true" viewBox="0 0 120 100"></svg>
+        </div>
+      </section>
+    </div>
+  </body>
+</html>
